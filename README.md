@@ -126,6 +126,8 @@ Configure tomcat to use ipV4 with CATALINA
   
 sudo apt-get -y install haveged  
   
+netstat -atpn  
+
 Also set time  
 
 google digitalocean time 
