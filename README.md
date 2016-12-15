@@ -42,7 +42,7 @@ Set your VPS services for hosting Java EE code as following. In front of is ngin
 sudo apt-get update
 sudo apt-get install puppet
 sudo apt-get install git
-git clone https://github.com/nicougit/puppet.git
+git clone https://github.com/jusju/puppet.git   #forked from nicougit
 cd puppet
 root@ubuntu-512mb-ams2-01:~/puppet# cp -r nginx/ tomcat8/ mariadb/ /etc/puppet/manifests/
 root@ubuntu-512mb-ams2-01:~/puppet# ls /etc/puppet/manifests/
@@ -64,7 +64,7 @@ mysql_secure_installation
 
 mysql configuration
 add similar database user as at HH
-grant right to given database user
+grant rights to given database user
 
 
 
