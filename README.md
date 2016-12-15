@@ -119,3 +119,8 @@ Add swap otherwise Java EE applications won’t run:
   
 
 https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
+
+Also set time  
+
+google digitalocean time 
+sudo dpkg-reconfigure tzdata    
