@@ -119,7 +119,13 @@ Add swap otherwise Java EE applications won’t run:
   
 
 https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
-
+  
+nmap --top-ports 4000 hostname  
+  
+Configure tomcat to use ipV4 with CATALINA 
+  
+sudo apt-get -y install haveged  
+  
 Also set time  
 
 google digitalocean time 
