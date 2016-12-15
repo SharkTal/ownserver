@@ -37,6 +37,36 @@ NS ns3.digitalocean.com.
 
 Log into your droplet using Putty SSH as root. Remove from sshd config remote root logins, create user account for yourself using adduser command. Add using visudo root permissions to your account.
 
+Set your VPS services for hosting Java EE code as following. In front of is nginx because it is not recommended to run tomcat in front.
+
+sudo apt-get update
+sudo apt-get install puppet
+sudo apt-get install git
+git clone https://github.com/nicougit/puppet.git
+cd puppet
+root@ubuntu-512mb-ams2-01:~/puppet# cp -r nginx/ tomcat8/ mariadb/ /etc/puppet/manifests/
+root@ubuntu-512mb-ams2-01:~/puppet# ls /etc/puppet/manifests/
+mariadb  nginx  tomcat8
+root@ubuntu-512mb-ams2-01:~/puppet# cp site.pp /etc/puppet/
+etckeeper-commit-post  manifests/             puppet.conf
+etckeeper-commit-pre   modules/
+root@ubuntu-512mb-ams2-01:~/puppet# cp site.pp /etc/puppet/manifests/
+root@ubuntu-512mb-ams2-01:~/puppet# cd /etc/puppet/manifests/
+root@ubuntu-512mb-ams2-01:/etc/puppet/manifests# ls
+mariadb  nginx  site.pp  tomcat8
+root@ubuntu-512mb-ams2-01:/etc/puppet/manifests# mv mariadb/ nginx/ tomcat8/ ../modules/
+root@ubuntu-512mb-ams2-01:/etc/puppet/manifests# ls site.pp
+following command must be done twice
+root@ubuntu-512mb-ams2-01:/etc/puppet/manifests# puppet apply site.pp
+root@ubuntu-512mb-ams2-01:/etc/puppet/manifests# puppet apply site.pp
+
+mysql_secure_installation
+
+mysql configuration
+add similar database user as at HH
+grant right to given database user
+
+
 
 
 
