@@ -31,7 +31,10 @@ ns3.digitalocean.com
 
 You can use any Linux distribution that you prefer, but in this guide we will use the latest long time release version of Ubuntu Server (currently Ubuntu 16.04.1 x64). We will pick the cheapest server with 512mb of RAM, which will be enough for simple web hosting. If you need a better server, you can upgrade your droplet later. For your droplet's hostname enter your domain name. If you don't have one yet, just enter any hostname as you can change it later. It is recomment to use Amsterdam 2 or 3 as the location of the VPS. If you have a SSH key you can add it to your droplet now, but it is not required. After you create the droplet, the root password will be emailed to you.
 
-### Domain setup on your droplet  
+### Domain setup on your droplet
+
+If you got a domain from Namecheap or have another domain, you can now connect it to your droplet. Adding a domain is not required, and you can use your server without completing this step. This part of the guide is limited, but [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean) is a link to a more detailed one.
+
 Set domain as following (DNS entries at Digital Ocean, Take a look that you have corresponding lines as in example)  
 jukka hostname  
 Add domain  
@@ -69,9 +72,6 @@ You should disable root login to your server and only use the account that you c
 sudoedit /etc/ssh/sshd_config  
 ```
 Find the line that says `PermitRootLogin yes` and change it to `PermitRootLogin no`. After that restart the ssh service with the command `sudo service sshd reload`.
-
-  
-Set your VPS services for hosting Java EE code as following. In front of is nginx because it is not recommended to run tomcat in front.
 
 ### Setting timezone and locale
 You should set the correct timezone:
@@ -152,9 +152,25 @@ server {
 ```
 After saving and exiting your editor, restart Nginx with the command `sudo service nginx`. Now by navigating to your server's address you should see a Tomcat 8 welcome page.
 
-## Using puppet
+## Maintaining your server
 
-This section is not finished and only contains some copypasted notes from Jukka.
+You should log in to your server regularly to install the latest updates. You can fetch the latest repositories and install the updates with one simple command:
+```
+sudo apt-get update && sudo apt-get upgrade -y
+```
+
+## Multitasking in terminal
+When you have learned the basics of using the terminal, you might want to have multiple windows or split your terminal pane into two different terminals to make multitasking easier. One solution to this is to make many connections to your server to get many terminals, but there are better ways, like installing `screen` or `tmux`. Tmux is more newbie friendly than screen, and allows splitting the screen in multiple regions. Here are links to cheatsheets listing all the different tmux and screen commands that you can use:
+
+[Tmux Cheat Sheet](http://tmuxcheatsheet.com/)
+
+[GNU Screen cheat-sheet](http://neophob.com/2007/04/gnu-screen-cheat-sheet/)
+
+These cheat sheets list all the available commands, but you only need to know a few (creating and closing windows, navigating between windows) to get more productive.
+
+## Using Puppet
+
+Advanced users can use Puppet to automate program installation and configuration. It is not needed, as we have already done all of this manually. This section is not finished and only contains some copypasted notes from Jukka.
   
 sudo apt-get update  
 sudo apt-get -y upgrade  
