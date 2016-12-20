@@ -1,10 +1,16 @@
-# Own Backend Server
-Written by Jukka Juslin and Nico Hagelberg
+# Setting up your own server
+Written by Jukka Juslin and [Nico Hagelberg](https://github.com/nicougit/)
 
-How to setup your own server as a student for free using Digital Ocean and Namecheap  
-Github offers so called student pack, which includes credit coupons to Digital Ocean and Namecheap. Digital Ocean and namecheap have been widely used already before this offer. Digital Ocean is a cloud VPS (Virtual Service Provider) and namecheap gives DNS mappings. Due to lack of time these instructions are not written for a newbie level.  
+How to setup your own server as a student for free using Digital Ocean and Namecheap. Github offers a student pack, which includes $50 worth of credits to Digital Ocean and a free .me domain for one year from Namecheap. Github student pack also has other benefits that you can use.
 
-Some Digital Ocean community tutorials are good resources, but some of them are outdated or just plain wrong. You should always look for multiple sources when looking for information.
+Digital Ocean and Namecheap have been widely used already before this offer. Digital Ocean is a cloud VPS (Virtual Private Server) provider and Namecheap offers domain registeration and web hosting. 
+
+This guide has some tips on how to setup your own Digital Ocean server to host your web applications. The instructions in this guide require at least some knowledge of basic Unix terminal commands.
+
+## Additional resources
+
+* [Command line basics - Tero Karvinen](http://terokarvinen.com/2009/command-line-basics-4)
+* Some [Digital Ocean community](https://www.digitalocean.com/community) tutorials are good resources, but some of them are outdated or just plain wrong. You should always look for multiple sources when looking for information.
 
 ## Getting your student pack
 Go to [https://education.github.com/pack](https://education.github.com/pack) and click "get your pack". Getting the pack might take couple of hours or might be ready instantly.
@@ -167,6 +173,9 @@ When you have learned the basics of using the terminal, you might want to have m
 [GNU Screen cheat-sheet](http://neophob.com/2007/04/gnu-screen-cheat-sheet/)
 
 These cheat sheets list all the available commands, but you only need to know a few (creating and closing windows, navigating between windows) to get more productive.
+
+## Enabling swap
+Is your server running out of memory but you don't want to upgrade to a more expensive droplet? See [enabling swap](https://github.com/jusju/ownserver/blob/master/enabling_swap.md) as a workaround.
 
 ## Using Puppet
 
