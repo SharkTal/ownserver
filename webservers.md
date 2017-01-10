@@ -1,4 +1,4 @@
-# Hosting Java web applications
+# Hosting web applications
 
 In this guide we will setup your server to be able to run your Java web applications. The programs that we will be using are:
 * Tomcat 8
@@ -6,6 +6,8 @@ In this guide we will setup your server to be able to run your Java web applicat
 * MariaDB
 
 An alternative to Nginx is [Apache](https://httpd.apache.org/) which is also widely used. This tutorial will only cover setting up Nginx though.
+
+If you wish to host static web pages or PHP applications on your server using Nginx, see 'Nginx advanced setup' on the bottom of this guide.
 
 ## Installing the packages
 
@@ -86,7 +88,7 @@ After saving and exiting your editor, restart Nginx with the command `sudo servi
 Configuration is now done. By navigating to your server's address you should see a Tomcat 8 welcome page. You should now be able to deploy your .war packages to `/var/lib/tomcat8/webapps/` and Tomcat should automatically deploy them and they should be accessible via the default http port.
 
 # Nginx advanced setup
-If you wish to host static pages or maybe PHP applications on your server in addition to Java applications running on Tomcat, you will need to a little bit of configuration.
+If you wish to host static pages or PHP applications on your server in addition to Java applications running on Tomcat, you will need to do a little bit of configuration.
 
 ## Static web pages
 To host static web pages we need to stop Nginx from proxying every single request to Tomcat. In `/etc/nginx/sites-available/default` we need to specify which requests we want to relay to Tomcat:
@@ -105,19 +107,19 @@ server {
                 try_files $uri $uri/ =404;
         }
 
-	location /demoapp {
-		proxy_pass http://localhost:8080/demoapp;
-	}
+        location /demoapp {
+                proxy_pass http://localhost:8080/demoapp;
+        }
 
-	location /anotherapp {
-		proxy_pass http://localhost:8080/anotherapp;
-	}
+        location /anotherapp {
+                proxy_pass http://localhost:8080/anotherapp;
+        }
 }
 
 ```
 
-With this example configuration Nginx would proxy incoming requests with `/demoapp` and `/anotherapp` to Tomcat, while other requested files would be served from `/var/www/html`. You could then move your static website to that directory and it would be shown to visitors.
- 
+With this example configuration Nginx would proxy incoming requests with `/demoapp` and `/anotherapp` to Tomcat, while other requested files would be served from `/var/www/html/`. You could then move your static website to that directory and it would be shown to visitors.
+
 ## Enabling PHP support
 
 ### Installing packages
@@ -127,7 +129,7 @@ sudo apt-get install -y php7.0 php7.0-fpm php7.0-cgi php7.0-mysql
 ```
 
 ### Nginx configuration
-We need to modify `/etc/nginx/sites-available/default` again to enable PHP support. If you have not completely overwritten the file with the examples provided in this tutorial, the default configuration already has PHP setup examples but the settings are commented out (with #). If you still have them, just uncomment the settings and restart Nginx with `sudo service nginx restart`.
+We need to modify `/etc/nginx/sites-available/default` again to enable PHP support. If you have not completely overwritten the file with the examples provided in this tutorial, the default configuration already has PHP setup examples, but they are commented out (with #). If you still have them, just uncomment the settings and restart Nginx with `sudo service nginx restart`.
 
 Here is a configuration that works for me:
 ```
@@ -139,4 +141,4 @@ location ~ \.php$ {
 }
 ```
 
-After restarting Nginx service your server should now support PHP files. This section of the guide is quite limited, so if you run into any problems and manage to fix them, please add your notes in this guide and make a pull request!
+This needs to be placed inside the server { .... } bit just like the other `location /` settings. After restarting Nginx service your server should now support PHP files. This section of the guide is quite limited, so if you run into any problems and manage to fix them, please add your notes in this guide and make a pull request!
