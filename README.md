@@ -53,17 +53,11 @@ CNAME www juslin.org.
 Log into your droplet using Putty SSH as root. First you will be asked for your initial password that was sent to you by email. You will then be asked to setup a new root password. Make your root password as strong as possible. After you have setup your new password you should now have a root shell on your droplet.
 
 ### Adding a new user account
-You should avoid logging in as the root user, and instead create a new account for yourself to use. Let's create a new user account with the `adduser` command. Just replace `<username>` with your desired username:
+You should avoid logging in as the root user, and instead create a new account for yourself to use. Let's create a new user account with the `adduser` command. Just replace `<username>` with your desired username.
 ```
-adduser <username>
+adduser <username> sudoers
 ```
-Now let's add your new user account to the sudoers group so that you can use the `sudo` command to run individual commands as root. We can edit the sudoers file by typing the command `visudo`. We want to include your new user in the file like so:
-```
-# User privilege specification
-root        ALL=(ALL:ALL) ALL
-<username>  ALL=(ALL:ALL) ALL
-```
-Save the file and exit. Your new user should now have sudoer rights.
+By specifying the groupname `sudoers` in the command we automatically add our new account to the `sudoers` group which gives us the permission to run commands as root.
 
 ### Testing your new user account
 You should not close your root shell just yet. Open up a new Putty window and try to log in to your server using the user account you just created. Once you are in, you should try running a command as `sudo`, like for example updating and upgrading your server's programs:
@@ -73,11 +67,16 @@ sudo apt-get update && sudo apt-get upgrade -y
 The server should prompt you for your password before running the command. If the command runs like it should, you now have a user account that you can use and no longer need the root shell.
 
 ### Disabling root login
-You should disable root login to your server and only use the account that you created.
+Once you have confirmed that your new account has sudoer rights, you should disable root login to your server and only use the account that you created.
 ```
 sudoedit /etc/ssh/sshd_config  
 ```
 Find the line that says `PermitRootLogin yes` and change it to `PermitRootLogin no`. After that restart the ssh service with the command `sudo service sshd reload`.
+
+Let's also disable root account locally:
+```
+sudo usermod --lock root
+```
 
 ### Setting timezone and locale
 You should set the correct timezone:
