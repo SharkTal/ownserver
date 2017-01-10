@@ -93,8 +93,8 @@ For locale select the locales that you need. In my case I have enabled `en_US.UT
 sudo dpkg-reconfigure locales
 ```
 
-## Hosting Java web applications
-If you want to set your server up for hosting Java web applications with Tomcat 8, Nginx and MariaDB, check [this guide](https://github.com/jusju/ownserver/blob/master/webservers.md).
+## Hosting web applications
+If you want to set your server up for hosting Java web applications with Tomcat 8, Nginx and MariaDB, check [this guide](https://github.com/jusju/ownserver/blob/master/webservers.md). It now also covers information on hosting static and PHP pages.
 
 ## Maintaining your server
 
