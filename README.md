@@ -22,9 +22,14 @@ Sign in to github with your github account which you must create if you did not 
 Find Digital Ocean under student pack and copy your promotion code. Go to [https://www.digitalocean.com/](https://www.digitalocean.com/) to create your account. You have to insert a valid credit card or a PayPal account during registeration. When filling the billing information you can also add your student pack promotion code to get $50 of credits for free.
 
 ## Getting a domain from Namecheap
+Namecheap offers a free .me domain for 1 year for all Github student pack users. If you don't want a domain at this point and only want your server to be accessible via its IP address, you can skip this step.
 
-Find Namecheap under student pack. Get promocode and use it at Namecheap  
-Setup DNS as following at namecheap: Domains -> Registration. Click Manage on domain at Domain List
+First find Namecheap under the student pack website. Get your promotion code and use it at Namecheap to create an account and register a domain.
+
+### Setting up DNS
+You want to make your domain's nameserver to point to DigitalOcean's nameservers where your server will be located.
+
+Setup DNS as following at Namecheap: Navigate to Domains -> Registration. Click Manage on domain at Domain List
 
 Nameservers, select Custom DNS and add followint nameservers:
 ```
@@ -99,7 +104,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 ```
 
 ## Multitasking in terminal
-When you have learned the basics of using the terminal, you might want to have multiple windows or split your terminal pane into two different terminals to make multitasking easier. One solution to this is to make many connections to your server to get many terminals, but there are better ways, like installing `screen` or `tmux`. Tmux is more newbie friendly than screen, and allows splitting the screen in multiple regions. Here are links to cheatsheets listing all the different tmux and screen commands that you can use:
+When you have learned the basics of using the terminal, you might want to have multiple windows or split your terminal pane into two different terminals to make multitasking easier. One solution to this is to make many connections to your server to get many terminals, but there are better ways, like installing `screen` or `tmux`. Personally I find tmux to be more newbie friendly than screen, and it allows splitting the screen in multiple regions easily. Here are links to cheatsheets listing all the different tmux and screen commands that you can use:
 
 [Tmux Cheat Sheet](http://tmuxcheatsheet.com/)
 
@@ -111,74 +116,4 @@ These cheat sheets list all the available commands, but you only need to know a 
 Is your server running out of memory but you don't want to upgrade to a more expensive droplet? See [enabling swap](https://github.com/jusju/ownserver/blob/master/enabling_swap.md) as a workaround.
 
 ## Using Puppet
-
-Advanced users can use Puppet to automate program installation and configuration. It is not needed, as we have already done all of this manually. This section is not finished and only contains some copypasted notes from Jukka.
-  
-sudo apt-get update  
-sudo apt-get -y upgrade  
-sudo apt-get -y install puppet git tmux  
-git clone https://github.com/jusju/puppet.git #forked from nicougit  
-cd puppet  
-Poista server.xml myy browser tomcat  
-LOGWATCH TO FIX  
-root@ubuntu-512mb-ams2-01:~/puppet# cp -r nginx/ tomcat8/ mariadb/ fail2ban/ logwatch/ /etc/puppet/modules  
-
-  
-root@ubuntu-512mb-ams2-01:~/puppet# cd /etc/puppet/manifests/  
-root@ubuntu-512mb-ams2-01:/etc/puppet/manifests# puppet apply site.pp  
-
-
-run  
-sudo mysql_secure_installation  
-sudo mysql must be used when accessing mariadb as root  
-mysql configuration  
-  
-
-add similar database user as at HH  
-grant rights to given database user  
-  
-
-jusju@jukka:~$ sudo mysql -u root -p  
-Enter password:  
-Welcome to the MariaDB monitor.  Commands end with ; or \g.  
-Your MariaDB connection id is 52  
-Server version: 10.0.28-MariaDB-0ubuntu0.16.04.1 Ubuntu 16.04  
-  
-
-Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.  
-
-  
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.  
-
-  
-MariaDB [(none)]> create database test;  
-Query OK, 1 row affected (0.00 sec)  
-MariaDB [(none)]> create user 'test'@'localhost' identified by 'test';  
-Query OK, 0 rows affected (0.00 sec)  
-MariaDB [(none)]> GRANT ALL ON test.* to 'test'@'localhost' ;  
-Query OK, 0 rows affected (0.01 sec)  
-
-  
-MariaDB [(none)]>  
-
-  
-CTRL+Z  
-
-  
-Add swap otherwise Java EE applications won’t run:  
-  
-
-https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
-  
-nmap --top-ports 4000 hostname  
-  
-Configure tomcat to use ipV4 with CATALINA 
-  
-sudo apt-get -y install haveged  
-  
-netstat -atpn  
-
-Also set time  
-
-google digitalocean time 
-sudo dpkg-reconfigure tzdata    
+Advanced users can use Puppet to automate program installation and configuration. It is not needed, as we have already done all of this manually. [Here](https://github.com/jusju/ownserver/blob/master/puppet.md) is a link to some notes related to using puppet. This section is not finished and only contains some copypasted notes from Jukka.
