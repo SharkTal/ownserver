@@ -11,6 +11,7 @@ This guide has some tips on how to setup your own Digital Ocean server to host y
 
 * [Command line basics - Tero Karvinen](http://terokarvinen.com/2009/command-line-basics-4)
 * Some [Digital Ocean community](https://www.digitalocean.com/community) tutorials are good resources, but some of them are outdated or just plain wrong. You should always look for multiple sources when looking for information.
+* [Mastering Bash and Terminal](https://www.blockloop.io/mastering-bash-and-terminal) has a great list of some more advanced useful bash shortcuts and commands
 
 ## Getting your student pack
 Go to [https://education.github.com/pack](https://education.github.com/pack) and click "get your pack". Getting the pack might take couple of hours or might be ready instantly.
