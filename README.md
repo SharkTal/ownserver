@@ -30,9 +30,7 @@ First find Namecheap under the student pack website. Get your promotion code and
 ### Setting up DNS
 You want to make your domain's nameserver to point to DigitalOcean's nameservers where your server will be located.
 
-Setup DNS as following at Namecheap: Navigate to Domains -> Registration. Click Manage on domain at Domain List
-
-Nameservers, select Custom DNS and add followint nameservers:
+Setup DNS as following at Namecheap: Navigate to Domains -> Registration. Click Manage on domain at Domain List -> Nameservers, select Custom DNS and add the following nameservers:
 ```
 ns1.digitalocean.com
 ns2.digitalocean.com
