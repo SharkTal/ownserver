@@ -12,7 +12,7 @@ sudo fallocate -l 4G /swap
 
 Check that it was created:
 ```
-ls -lh /swapfile
+ls -lh /swap
 ```
 Set permissions to 0600 so that it can only be accessed by root user:
 ```
