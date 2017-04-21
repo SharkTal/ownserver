@@ -82,7 +82,7 @@ server {
 	}
 }
 ```
-After saving and exiting your editor, restart Nginx with the command `sudo service nginx`.
+After saving and exiting your editor, restart Nginx with the command `sudo service nginx restart`.
 
 ### That's it!
 Configuration is now done. By navigating to your server's address you should see a Tomcat 8 welcome page. You should now be able to deploy your .war packages to `/var/lib/tomcat8/webapps/` and Tomcat should automatically deploy them and they should be accessible via the default http port.
