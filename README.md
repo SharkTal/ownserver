@@ -20,7 +20,7 @@ Sign in to github with your github account which you must create if you did not 
 
 ## Getting your Digital Ocean credits
 
-Find Digital Ocean under student pack and copy your promotion code. Go to [https://www.digitalocean.com/](https://www.digitalocean.com/) to create your account. You have to insert a valid credit card or a PayPal account during registeration. When filling the billing information you can also add your student pack promotion code to get $50 of credits for free.
+Find Digital Ocean under student pack and copy your promotion code. Go to [https://www.digitalocean.com/](https://www.digitalocean.com/) to create your account. You have to insert a valid credit card or a PayPal account during registeration. When opening billing information you can also add your student pack promotion code to get $50 of credits for free.
 
 ## Getting a domain from Namecheap
 Namecheap offers a free .me domain for 1 year for all Github student pack users. If you don't want a domain at this point and only want your server to be accessible via its IP address, you can skip this step.
